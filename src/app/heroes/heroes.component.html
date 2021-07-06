@@ -6,13 +6,12 @@ Pipes are a good way to format strings, currency amounts, dates and other displa
 <!-- (click) is the event listener, onSelect we need to define -->
 <!-- look into *ngFor -->
 <ul class="heroes">
-    <li *ngFor="let hero of heroes" 
-    [class.selected]="hero === selectedHero"
-    (click)="onSelect(hero)">
-
-        <span class="badge">{{hero.id}}</span> {{hero.name}}
+    <li *ngFor="let hero of heroes">
+        <a routerLink="/detail/{{hero.id}}">
+            <span class="badge">{{hero.id}}</span> {{hero.name}}
+        </a>
         
     </li>
 </ul>
 
-<app-hero-detail [hero]="selectedHero"></app-hero-detail> 
+<!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail>  -->
