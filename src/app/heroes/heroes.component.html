@@ -2,11 +2,27 @@
 
 Pipes are a good way to format strings, currency amounts, dates and other display data. Angular ships with several built-in pipes and you can create your own. -->
 
-<h2>{{hero.name | uppercase}} Details</h2>
-<div><span>id: </span>{{hero.id}}</div>
-<div><span>name: </span>{{hero.name}}</div>
+<h2>My Heroes</h2>
+<!-- (click) is the event listener, onSelect we need to define -->
+<!-- look into *ngFor -->
+<ul class="heroes">
+    <li *ngFor="let hero of heroes" 
+    [class.selected]="hero === selectedHero"
+    (click)="onSelect(hero)"
+    >
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </li>
+</ul>
+<!-- *ngIf is like Angular's ternary? "If no hero selected, do nothing. If hero selected, display" -->
+<div *ngIf="selectedHero">
 
-<div>
-    <label for="name">Hero Name: </label>
-    <input id="name" [(ngModel)]="hero.name" placeholder="name">
+    <h2>{{selectedHero.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{hero.id}}</div>
+    <div><span>name: </span>{{hero.name}}</div>
+    
+    <div>
+        <label for="name">Hero Name: </label>
+        <input id="name" [(ngModel)]="selectedHero.name" placeholder="name">
+    </div>
+    
 </div>
