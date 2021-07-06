@@ -1,4 +1,8 @@
 <h1>{{title}}</h1>
-<!-- don't quite understand WHY line 3 works yet -->
-<app-heroes></app-heroes>
-<!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
+<!-- line 3/4 = components itself.. similar to React, and importing Bootstrap then calling <Card></Card> or something similar. The tags below are the whole component.  -->
+<nav>
+    <a routerLink="/dashboard">Heroes</a>
+    <a routerLink="/heroes">Heroes</a>
+</nav>
+<router-outlet></router-outlet>
+<app-messages></app-messages>
