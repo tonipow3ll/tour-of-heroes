@@ -41,6 +41,16 @@ addHero(hero: Hero): Observable<Hero> {
   );
 }
 
+/** DELETE: delete the hero from the server */
+deleteHero(id: number): Observable<Hero> {
+  const url = `${this.heroesUrl}/${id}`;
+
+  return this.http.delete<Hero>(url, this.httpOptions).pipe(
+    tap(_ => this.log(`deleted hero id=${id}`)),
+    catchError(this.handleError<Hero>('deleteHero'))
+  );
+}
+
   getHero(id: number): Observable<Hero> {
     // For now, assume that a hero with the specified `id` always exists.
     // Error handling will be added in the next step of the tutorial.
@@ -53,6 +63,19 @@ addHero(hero: Hero): Observable<Hero> {
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
+  }
+
+   
+  searchHeroes(term: string): Observable<Hero[]> {
+    if(!term.trim()) {
+      return of ([])
+    }
+    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
+      tap(x => x.length ? 
+        this.log(`found heroes matching "${term}"`) :
+        this.log(`no heroes matching "${term}`)),
+        catchError(this.handleError<Hero[]>('searchHeroes', []))
+    )
   }
 
 /**

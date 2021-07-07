@@ -7,12 +7,13 @@ Pipes are a good way to format strings, currency amounts, dates and other displa
 <!-- look into *ngFor -->
 <ul class="heroes">
     <li *ngFor="let hero of heroes">
-        <a routerLink="/detail/{{hero.id}}">
-            <span class="badge">{{hero.id}}</span> {{hero.name}}
-        </a>
-        
+      <a routerLink="/detail/{{hero.id}}">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      </a>
+      <button class="delete" title="delete hero"
+        (click)="delete(hero)">x</button>
     </li>
-</ul>
+  </ul>
 
 <div>
     <label for="new-hero">Hero name: </label>
