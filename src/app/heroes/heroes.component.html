@@ -14,4 +14,14 @@ Pipes are a good way to format strings, currency amounts, dates and other displa
     </li>
 </ul>
 
+<div>
+    <label for="new-hero">Hero name: </label>
+    <input id="new-hero" #heroName />
+  
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button class="add-button" (click)="add(heroName.value); heroName.value=''">
+      Add hero
+    </button>
+  </div>
+
 <!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail>  -->
